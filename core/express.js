@@ -19,33 +19,13 @@ initMiddleWares = app => {
   app.use(bodyParser.json());
   app.use(cookieParser());
 };
-function initSession(app, db) {
-  // Express MongoDB session storage
-  app.use(
-    session({
-      saveUninitialized: true,
-      resave: false,
-      secret: config.sessionSecret,
-      store: new MongoStore({
-        url: config.db.uri,
-        collection: config.sessions.collection,
-        autoReconnect: true
-      }),
-      cookie: config.sessions.cookie,
-      name: config.sessions.name
-    })
-  );
-}
 module.exports = function(db) {
   const app = express();
 
   //Register middleware
   initMiddleWares(app);
-  //   initSession(app, db);
   //Load routes
-  app.get("/", function(req, res) {
-    res.send("hello");
-  });
+
   require("../routes")(app, db);
   logger.warn(app);
   return app;

@@ -1,7 +1,6 @@
 module.exports = function(app, db) {
-  app.get("/", function(req, res) {
-    res.send("GET request to the homepage");
-  });
+  //Home page
+  require("../modules/posts/Route")(app, db);
   // Handle errors
   require("./errors")(app, db);
 };
