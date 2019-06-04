@@ -1,7 +1,20 @@
+const axios = require("axios");
 const Post = require("./Model");
+const tickets = require("../../api/Zendesk/index");
+const logger = require("../../core/logger");
 module.exports = {
   index: function(req, res) {
-    Post.find().then(data => res.send(data));
+    // Post.find().then(data => res.send(data));
+    console.log(tickets);
+
+    tickets
+      .request("/users.json", "get")
+      .then(response => {
+        return res.send(response);
+      })
+      .catch(err => {
+        return res.send(err);
+      });
   },
   show: function(req, res) {
     res.send("show" + req.params.id);

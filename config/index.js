@@ -11,6 +11,15 @@ module.exports = {
     contactEmail: "hello@vem-app.com"
   },
   port: process.env.DB_PORT || 3000,
+  api: {
+    zendesk: {
+      basicAuth: {
+        username: process.env.ZENDESK_USERNAME,
+        password: process.env.ZENDESK_PASSWORD
+      },
+      baseURL: "https://tony1106.zendesk.com/api/v2"
+    }
+  },
   db: {
     uri:
       process.env.MONGO_URI ||
