@@ -1,6 +1,7 @@
 const axios = require("axios");
 const logger = require("../core/logger");
 const response = require("../core/response");
+
 module.exports = class Services {
   constructor(API_name, baseURL) {
     this.API_name = API_name;
@@ -40,15 +41,15 @@ module.exports = class Services {
           }
         })
         .catch(error => {
-          if (error.response && error.response.data) {
-            console.log(error.response.data.error);
-
-            logger.error(
-              `Request to this ${this.API_name} API is error!}`,
-              error.response.data.error
-            );
-            return reject(error.response.data.error);
-          } else reject(error);
+          logger.error(
+            `Request to the API: ${this.API_name} is error!}`,
+            error.response.data.error
+          );
+          // return reject(error.response.data.error);
+          return reject({
+            status: error.response.status,
+            msg: error.response.data.error
+          });
         });
     });
   }
