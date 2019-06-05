@@ -12,14 +12,6 @@ module.exports = function(app) {
     logger.error(err.stack);
     res.status(err.status || 500);
 
-    // Respond with html page
-    if (req.accepts("html")) {
-      return res.render("500", {
-        url: req.originalUrl,
-        error: err
-      });
-    }
-
     // Respond with json
     if (req.accepts("json")) {
       return response.json(res, null, response.SERVER_ERROR, err.message);

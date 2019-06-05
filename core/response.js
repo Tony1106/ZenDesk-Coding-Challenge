@@ -47,18 +47,6 @@ module.exports = {
     message: "This resource is not implemented!"
   },
 
-  /**
-   * Generate a JSON REST API response
-   *
-   * If data present and no error, we will send status 200 with JSON data
-   * If no data but has error, we will send HTTP error code and message
-   *
-   * @param  {Object} res        	ExpressJS res object
-   * @param  {json} 	data       	JSON response data
-   * @param  {Object} err        	Error object
-   * @param  {String} errMessage  Custom error message
-   * @return {json} If res assigned, return with res, otherwise return the response JSON object
-   */
   json(res, data, err, errMessage) {
     let response = {};
 

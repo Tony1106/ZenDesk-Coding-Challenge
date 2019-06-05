@@ -2,6 +2,7 @@ const axios = require("axios");
 const Post = require("./Model");
 const tickets = require("../../api/Zendesk/index");
 const logger = require("../../core/logger");
+const response = require("../../core/response");
 async function handleError(error) {
   try {
     throw new Error(error);
@@ -9,19 +10,13 @@ async function handleError(error) {
 }
 module.exports = {
   index: function(req, res) {
-    // Post.find().then(data => res.send(data));
-
     tickets
       .request("/users.json", "get")
       .then(response => {
         return res.send(response);
       })
-      // .catch(error => {
-      //   handleError(error);
-      //   // console.log(error.status, "hello");
-      // })
       .catch(err => {
-        res.status(400).send(err);
+        response.json(res, null, err, null);
       });
   },
   show: function(req, res) {
