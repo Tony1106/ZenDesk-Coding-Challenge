@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../containers/Header/index";
+import Header from "../components/Header/index";
 import Body from "../containers/Body/index";
 export default function Home() {
   return (
