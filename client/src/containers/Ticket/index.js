@@ -2,25 +2,30 @@ import React, { Component } from "react";
 import styles from "./styles.module.scss";
 import axios from "axios";
 export default class Body extends Component {
-  componentDidMount() {
-    axios({
-      method: "GET",
-      url: "https://tony1106.zendesk.com/api/v2/users.json",
-      auth: {
-        username: "buiminhtien06@gmail.com",
-        password: "tien1106"
-      }
-    })
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
+  componentDidMount() {}
   render() {
     return (
-      <div className={styles.header}>Individual Tickets will show here</div>
+      <div className={styles.container}>
+        <h5>Subject</h5>
+        <p>
+          Pariatur voluptate laborum voluptate sunt ad magna exercitation nulla.
+          In in Lorem minim dolor laboris reprehenderit ad Lorem. Cupidatat
+          laborum qui mollit nostrud magna ullamco.{" "}
+        </p>
+        <div className={styles.footer}>
+          <div>
+            {" "}
+            Status
+            <span>
+              <i className="fas fa-lightbulb" />
+            </span>
+          </div>
+          <div>
+            Priority
+            <span class="badge badge-pill badge-success">danger</span>
+          </div>
+        </div>
+      </div>
     );
   }
 }

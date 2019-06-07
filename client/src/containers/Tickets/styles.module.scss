@@ -1,8 +1,6 @@
 @import "../../styles/variable";
-.header {
+.container {
   width: 100%;
-  height: $header-height;
-  background-color: grey;
-  align-items: center;
-  display: flex;
+  padding-left: 20px;
+  padding-top: 20px;
 }

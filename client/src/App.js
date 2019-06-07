@@ -1,5 +1,7 @@
 import React from "react";
 import "./App.scss";
+import "bootstrap/dist/css/bootstrap.css";
+import "font-awesome/css/font-awesome.css";
 import Header from "./components/Header";
 import Home from "./screens/Home/";
 import ReadMe from "./screens/ReadMe/";

@@ -1,8 +1,17 @@
 @import "../../styles/variable";
-.header {
+.container {
   width: 100%;
-  height: $header-height;
-  background-color: grey;
-  align-items: center;
+  height: $ticket-height;
+  max-width: 300px;
   display: flex;
+  flex-direction: column;
+  border: 1px solid #dddddd;
+  .footer {
+    height: 30px;
+    background-color: $ticket-footer-background;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
