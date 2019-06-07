@@ -1,13 +1,8 @@
-const axios = require("axios");
 const Post = require("./Model");
-const tickets = require("../../api/Zendesk/index");
 const logger = require("../../core/logger");
+const tickets = require("../../api/Zendesk/index");
 const response = require("../../core/response");
-async function handleError(error) {
-  try {
-    throw new Error(error);
-  } catch (error) {}
-}
+
 module.exports = {
   index: function(req, res) {
     let { per_page, page } = req.query;
