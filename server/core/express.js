@@ -1,12 +1,14 @@
 const express = require("express");
-const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-let session = require("express-session");
-let MongoStore = require("connect-mongo")(session);
+const cors = require("cors");
+var morgan = require("morgan");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 const logger = require("../core/logger");
 const config = require("../config");
-initMiddleWares = app => {
+
+function initMiddleWares(app) {
   // Configure express app
   app.set("port", config.port);
   // Request body parsing middleware should be above methodOverride
@@ -18,7 +20,13 @@ initMiddleWares = app => {
   );
   app.use(bodyParser.json());
   app.use(cookieParser());
-};
+
+  //Cors
+  app.use(cors());
+
+  //Log the request
+  app.use(morgan("tiny"));
+}
 module.exports = function(db) {
   const app = express();
 
@@ -27,6 +35,6 @@ module.exports = function(db) {
   //Load routes
 
   require("../routes")(app, db);
-  logger.warn(app);
+
   return app;
 };
