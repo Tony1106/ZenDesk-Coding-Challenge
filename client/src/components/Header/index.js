@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.module.scss";
+import { Link } from "react-router-dom";
 export default function Home(props) {
   return (
     <div className={styles.header}>
@@ -9,14 +10,19 @@ export default function Home(props) {
         </a>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">
+            <Link class="nav-link" to="/">
               Home
-            </a>
+            </Link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              Link
-            </a>
+            <Link class="nav-link" to="/readme">
+              Readme
+            </Link>
+          </li>
+          <li class="nav-item">
+            <Link class="nav-link" to="/about">
+              About
+            </Link>
           </li>
         </ul>
         <div className="">Profile</div>

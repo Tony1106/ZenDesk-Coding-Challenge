@@ -4,7 +4,6 @@ import Body from "../containers/Body/index";
 export default function Home() {
   return (
     <div>
-      <Header>Header</Header>
       <Body>This is the bodu</Body>
     </div>
   );
