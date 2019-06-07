@@ -1,8 +1,7 @@
-@import "../../styles/variable";
+@import "../../styles/variable.scss";
 .header {
   width: 100%;
-  height: $header-height;
-  background-color: grey;
+  background-color: $second-color;
   align-items: center;
   display: flex;
 }

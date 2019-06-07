@@ -19,6 +19,6 @@ export default class Body extends Component {
       });
   }
   render() {
-    return <div className={styles.header}>{this.props.children}</div>;
+    return <div className={styles.header}>Tickets will show here</div>;
   }
 }

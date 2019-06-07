@@ -1,0 +1,8 @@
+@import "../../styles/variable.scss";
+.side-menu {
+  width: $side-menu-width;
+}
+.layout {
+  display: flex;
+  flex-direction: row;
+}
