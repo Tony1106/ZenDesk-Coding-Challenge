@@ -35,25 +35,14 @@ module.exports = {
       });
   },
   show: function(req, res) {
-    res.send("show" + req.params.id);
-  },
-  store: function(req, res) {
-    res.send("store" + req.params.id);
-  },
-  create: function(req, res) {
-    let post = new Post({
-      title: "WORLD",
-      des: "des"
-    });
-    post.save().then(data => res.send(data));
-  },
-  update: function(req, res) {
-    Post.findOne({ title: "hello" }).then(data => res.send(data));
-  },
-  edit: function(req, res) {
-    res.send("edit");
-  },
-  delete: function(req, res) {
-    //delete
+    let ticketID = req.params.id;
+    tickets
+      .request(`/tickets/${ticketID}.json`, "get")
+      .then(response => {
+        return res.send(response);
+      })
+      .catch(err => {
+        response.json(res, null, err, null);
+      });
   }
 };
