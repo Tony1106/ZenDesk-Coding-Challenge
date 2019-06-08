@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import styles from "./styles.module.scss";
 import axios from "axios";
-export default class Body extends Component {
-  componentDidMount() {}
+export default class Ticket extends Component {
   render() {
+    let { subject, description, status, priority } = this.props.ticket;
+    const maxDescriptionLength = 150;
+    if (description.length > maxDescriptionLength)
+      description = description.substring(0, maxDescriptionLength);
     return (
       <div className={styles.container}>
-        <h5>aliquip mollit quis laborum incididunt</h5>
-        <p>
-          Pariatur voluptate laborum voluptate sunt ad magna exercitation nulla.
-          In in Lorem minim dolor laboris reprehenderit{" "}
-        </p>
+        <h5>{subject}</h5>
+        <p>{description} ...</p>
 
         <div className={styles.footer}>
           <div>

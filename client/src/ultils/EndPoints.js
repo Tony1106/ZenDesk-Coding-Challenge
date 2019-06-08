@@ -2,7 +2,7 @@ export const endpoint = {
   baseURL: "http://localhost:4000",
   tickets: {
     getAllTickets: "/tickets",
-    getPaginateTickets: "/tickets?per_page={value}&page{value}",
+    getPaginateTickets: "/tickets?per_page=%per_page%&page=%page%",
     getTicket: "/tickets/:id",
     getUser: "/user.json"
   }
