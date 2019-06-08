@@ -10,7 +10,7 @@ export default function Home(props) {
         </a>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <Link class="nav-link" to="/">
+            <Link class="nav-link" to="/tickets">
               Home
             </Link>
           </li>

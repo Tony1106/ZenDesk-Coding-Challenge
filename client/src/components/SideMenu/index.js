@@ -5,7 +5,7 @@ export default function SideMenu(props) {
   return (
     <div class="list-group">
       <a href="#" class="list-group-item list-group-item-action active">
-        Show all items
+        Show all tickets
       </a>
       <a href="#" class="list-group-item list-group-item-action">
         Pending tickets

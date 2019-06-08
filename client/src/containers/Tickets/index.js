@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import styles from "./styles.module.scss";
-import Ticket from "../Ticket/";
+import Ticket from "../../components/Ticket";
 import Pagination from "../../components/Pagination";
+import Spinner from "../../component/Spinner";
 import { constant } from "../../constant/";
 import { endpoint } from "../../ultils/EndPoints";
 import axios from "axios";
