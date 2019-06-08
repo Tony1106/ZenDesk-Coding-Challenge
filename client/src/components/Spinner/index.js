@@ -1,9 +1,12 @@
 import React from "react";
-
-export default function Spinner() {
+import styles from "./styles.module.scss";
+export default function Spinner(props) {
+  if (!props.isShow) return null;
   return (
-    <div class="spinner-border text-info" role="status">
-      <span class="sr-only">Loading...</span>
+    <div className={styles.wrapper}>
+      <div class="spinner-border text-info" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
     </div>
   );
 }

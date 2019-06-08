@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import styles from "./styles.module.scss";
 import Ticket from "../../components/Ticket";
 import Pagination from "../../components/Pagination";
-import Spinner from "../../component/Spinner";
+import Spinner from "../../components/Spinner";
 import { constant } from "../../constant/";
 import { endpoint } from "../../ultils/EndPoints";
 import axios from "axios";
 export default class Tickets extends Component {
   state = {
     ticketsEndPoint: endpoint.tickets.getPaginateTickets,
+    isLoading: false,
     count: 0,
     page: 1,
     tickets: []
@@ -23,14 +24,14 @@ export default class Tickets extends Component {
   }
   getTicket = (endpoint, page) => {
     let { per_page } = constant.pagination;
-
     endpoint = this.makePaginationEndPoint(endpoint, per_page, page);
+
+    this.setState({ isLoading: true });
     axios
       .get(endpoint)
       .then(res => {
         let { tickets, count } = res.data;
-        console.log(res.data);
-
+        this.setState({ isLoading: false });
         this.setState({
           count,
           tickets
@@ -41,13 +42,14 @@ export default class Tickets extends Component {
       });
   };
   handleChangePage = page => {
+    this.setState({ page, tickets: [] });
     this.getTicket(this.state.ticketsEndPoint, page);
-    this.setState({ page });
   };
   render() {
     const { tickets, count, per_page, page } = this.state;
     return (
       <div className={styles.tickets}>
+        <Spinner isShow={this.state.isLoading} />
         <h3>View tickets</h3>
         <div className={styles.ticket}>
           {tickets &&
