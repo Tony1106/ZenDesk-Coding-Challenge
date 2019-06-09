@@ -6,7 +6,7 @@ import Pagination from "../../components/Pagination";
 import Spinner from "../../components/Spinner";
 import ViewTicket from "../ViewTicket";
 import { constant } from "../../constant/";
-import { endpoint } from "../../ultils/EndPoints";
+import { endpoint, makePaginationEndPoint } from "../../ultils/EndPoints";
 import axios from "axios";
 import { Route } from "react-router-dom";
 export default class Tickets extends Component {
@@ -24,12 +24,10 @@ export default class Tickets extends Component {
     let page = this.state.page;
     this.getTicket(ticketsEndPoint, page);
   }
-  makePaginationEndPoint(endpoint, per_page, page) {
-    return endpoint.replace("%per_page%", per_page).replace("%page%", page);
-  }
+
   getTicket = (endpoint, page) => {
     let { per_page } = constant.pagination;
-    endpoint = this.makePaginationEndPoint(endpoint, per_page, page);
+    endpoint = makePaginationEndPoint(endpoint, per_page, page);
 
     this.setState({ isLoading: true });
     axios

@@ -1,5 +1,4 @@
 export const endpoint = {
-  baseURL: "http://localhost:4000",
   tickets: {
     getAllTickets: "/tickets",
     getPaginateTickets: "/tickets?per_page=%per_page%&page=%page%",
@@ -8,14 +7,11 @@ export const endpoint = {
   }
 };
 
-export const makeEndPoint = (
-  baseURL,
-  services,
-  isPagination,
-  per_page,
-  page
-) => {
-  if (isPagination) {
-    return baseURL + services;
-  }
-};
+export function makePaginationEndPoint(endpoint, per_page, page) {
+  return (
+    endpoint && endpoint.replace("%per_page%", per_page).replace("%page%", page)
+  );
+}
+export function makeTicketEndPoint(url, id) {
+  return url && url.replace(":id", id);
+}

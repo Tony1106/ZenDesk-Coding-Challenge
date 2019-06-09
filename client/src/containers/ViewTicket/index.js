@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { ToastsContainer, ToastsStore } from "react-toasts";
 import styles from "./styles.module.scss";
-import { endpoint } from "../../ultils/EndPoints";
+import { endpoint, makeTicketEndPoint } from "../../ultils/EndPoints";
 import Spinner from "../../components/Spinner";
 import axios from "axios";
 export default class ViewTicket extends Component {
@@ -35,9 +35,6 @@ export default class ViewTicket extends Component {
   getTicket = id => {
     this.resetState();
     let ticketEndPoint = endpoint.tickets.getTicket;
-    const makeTicketEndPoint = (url, id) => {
-      return url && url.replace(":id", id);
-    };
     ticketEndPoint = makeTicketEndPoint(ticketEndPoint, id);
 
     axios
