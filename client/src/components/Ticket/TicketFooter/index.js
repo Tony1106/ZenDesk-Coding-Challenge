@@ -14,7 +14,7 @@ export default function TicketFooter(props) {
       urgent: "badge-danger"
     }
   };
-  const renderClass = status => {
+  const makeClassBaseOnStatus = status => {
     if (classVariable.status.hasOwnProperty(status)) {
       return classVariable.status[status.toLowerCase()];
     }
@@ -22,7 +22,7 @@ export default function TicketFooter(props) {
       return classVariable.priority[status.toLowerCase()];
     }
   };
-  let outputClass = renderClass(props.status);
+  let outputClass = makeClassBaseOnStatus(props.status);
   return (
     <>
       <div> {props.name}</div>
