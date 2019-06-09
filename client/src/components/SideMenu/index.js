@@ -13,9 +13,6 @@ export default function SideMenu(props) {
       <a href="#" class="list-group-item list-group-item-action">
         Solved tickets
       </a>
-      <a href="#" class="list-group-item list-group-item-action">
-        Deleted tickets
-      </a>
     </div>
   );
 }

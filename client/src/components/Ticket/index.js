@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styles from "./styles.module.scss";
 import { Link } from "react-router-dom";
+import TicketFooter from "./TicketFooter";
 import axios from "axios";
 export default class Ticket extends Component {
   render() {
@@ -14,17 +15,10 @@ export default class Ticket extends Component {
         <p>{description} ...</p>
 
         <div className={styles.footer}>
-          <div>
-            {" "}
-            Status
-            <span>
-              <span class="badge badge-pill badge-success">Open</span>
-            </span>
-          </div>
-          <div>
-            Priority
-            <span class="badge badge-pill badge-success">danger</span>
-          </div>
+          <TicketFooter name="Status" status={status} />
+        </div>
+        <div className={styles.footer}>
+          <TicketFooter name="Priority" status={priority} />
         </div>
         <div className={styles.action}>
           {" "}
