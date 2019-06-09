@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import styles from "./styles.module.scss";
+import { Link } from "react-router-dom";
 import axios from "axios";
 export default class Ticket extends Component {
   render() {
-    let { subject, description, status, priority } = this.props.ticket;
+    let { subject, description, status, priority, id } = this.props.ticket;
     const maxDescriptionLength = 150;
     if (description.length > maxDescriptionLength)
       description = description.substring(0, maxDescriptionLength);
@@ -27,7 +28,13 @@ export default class Ticket extends Component {
         </div>
         <div className={styles.action}>
           {" "}
-          <a class="btn btn-primary btn-sm">View Ticket</a>
+          <Link
+            class="btn btn-primary btn-sm"
+            to={`/tickets/${id}`}
+            onClick={() => this.props.openTicket()}
+          >
+            View Ticket
+          </Link>
         </div>
       </div>
     );
