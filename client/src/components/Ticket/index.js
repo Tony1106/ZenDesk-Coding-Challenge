@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styles from "./styles.module.scss";
 import { Link } from "react-router-dom";
 import TicketFooter from "./TicketFooter";
-import axios from "axios";
+
 export default class Ticket extends Component {
   render() {
     let { subject, description, status, priority, id } = this.props.ticket;
@@ -23,7 +23,7 @@ export default class Ticket extends Component {
         <div className={styles.action}>
           {" "}
           <Link
-            class="btn btn-primary btn-sm"
+            className="btn btn-primary btn-sm"
             to={`/tickets/${id}`}
             onClick={() => this.props.openTicket()}
           >

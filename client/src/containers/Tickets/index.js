@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { ToastsContainer, ToastsStore } from "react-toasts";
 import styles from "./styles.module.scss";
 import Ticket from "../../components/Ticket";
 import Pagination from "../../components/Pagination";
@@ -15,7 +16,8 @@ export default class Tickets extends Component {
     count: 0,
     page: 1,
     isOpenTicket: false,
-    tickets: []
+    tickets: [],
+    errors: {}
   };
   componentDidMount() {
     let { ticketsEndPoint } = this.state;
@@ -39,9 +41,15 @@ export default class Tickets extends Component {
           count,
           tickets
         });
+        ToastsStore.success("Load all tickets success");
       })
       .catch(err => {
-        console.log(err);
+        this.setState({
+          error: err.response.data.error,
+          isLoading: false
+        });
+        ToastsStore.error(err.response.data.error.msg);
+        console.log(err.response.data.error);
       });
   };
   handleChangePage = page => {
@@ -55,10 +63,11 @@ export default class Tickets extends Component {
     this.setState({ isOpenTicket: false });
   };
   render() {
-    const { tickets, count, per_page, page } = this.state;
+    const { tickets, count, page } = this.state;
     return (
       <div className={styles.tickets}>
         <Spinner isShow={this.state.isLoading} />
+        <ToastsContainer store={ToastsStore} />
         <h3>View tickets</h3>
         <div className={styles.ticket}>
           {tickets &&

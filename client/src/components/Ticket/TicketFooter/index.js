@@ -26,7 +26,7 @@ export default function TicketFooter(props) {
   return (
     <>
       <div> {props.name}</div>
-      <div class={`badge badge-pill ${props.status && outputClass} `}>
+      <div className={`badge badge-pill ${props.status && outputClass} `}>
         {props.status || "Not set"}
       </div>
     </>

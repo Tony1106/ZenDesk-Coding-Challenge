@@ -4,23 +4,23 @@ import { Link } from "react-router-dom";
 export default function Home(props) {
   return (
     <div className={styles.header}>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <a className="navbar-brand" href="/">
           Navbar
         </a>
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <Link class="nav-link" to="/tickets">
+        <ul className="navbar-nav mr-auto">
+          <li className="nav-item active">
+            <Link className="nav-link" to="/tickets">
               Home
             </Link>
           </li>
-          <li class="nav-item">
-            <Link class="nav-link" to="/readme">
+          <li className="nav-item">
+            <Link className="nav-link" to="/readme">
               Readme
             </Link>
           </li>
-          <li class="nav-item">
-            <Link class="nav-link" to="/about">
+          <li className="nav-item">
+            <Link className="nav-link" to="/about">
               About
             </Link>
           </li>

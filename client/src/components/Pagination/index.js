@@ -1,6 +1,5 @@
 import React from "react";
-import styles from "./styles.module.scss";
-import { Link } from "react-router-dom";
+
 export default class Pagination extends React.PureComponent {
   handleChangePage(page) {
     this.props.handleChange(page);
@@ -12,7 +11,7 @@ export default class Pagination extends React.PureComponent {
     for (let i = 1; i <= totalPage; i++) {
       listPage.push(
         <li
-          className={i == page ? "page-item active" : "page-item"}
+          className={i === page ? "page-item active" : "page-item"}
           key={i}
           value={i}
           onClick={() => this.handleChangePage(i)}

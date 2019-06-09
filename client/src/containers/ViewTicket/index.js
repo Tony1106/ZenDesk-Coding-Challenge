@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { ToastsContainer, ToastsStore } from "react-toasts";
 import styles from "./styles.module.scss";
 import { endpoint } from "../../ultils/EndPoints";
 import Spinner from "../../components/Spinner";
@@ -44,7 +45,14 @@ export default class ViewTicket extends Component {
       .then(res => {
         this.setState({ ticket: res.data.ticket, isLoading: false });
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        this.setState({
+          error: err.response.data.error,
+          isLoading: false
+        });
+        ToastsStore.error(err.response.data.error.msg);
+        console.log(err.response.data.error);
+      });
   };
   resetState = () => {
     this.setState({
@@ -53,7 +61,7 @@ export default class ViewTicket extends Component {
     });
   };
   render() {
-    const { subject, description, priority, status } = this.state.ticket;
+    const { subject, description } = this.state.ticket;
     const { id } = this.props.match.params;
     let spinner = this.state.isLoading ? <Spinner isShow /> : null;
     return (

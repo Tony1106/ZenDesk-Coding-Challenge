@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import SideMenu from "../../components/SideMenu";
 import Tickets from "../../containers/Tickets/";
 
-import { Route, BrowserRouter as Router } from "react-router-dom";
+import { Route } from "react-router-dom";
 export default function Home(props) {
   return (
     <div className={styles.layout}>
