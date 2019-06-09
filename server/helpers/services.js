@@ -4,7 +4,6 @@ const logger = require("../core/logger");
 module.exports = class Services {
   constructor(API_name, baseURL) {
     this.API_name = API_name;
-    this.baseURL = baseURL;
 
     this.config = {
       baseURL
