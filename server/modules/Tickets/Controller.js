@@ -7,7 +7,7 @@ module.exports = {
   index: function(req, res) {
     let { per_page, page } = req.query;
     let endpoint = "/tickets.json";
-    if (per_page && page) {
+    if (per_page > 1 && page > 0) {
       endpoint = `${endpoint}?per_page=${per_page}&page=${page}`;
     }
     tickets

@@ -3,7 +3,7 @@ export const endpoint = {
     getAllTickets: "/tickets",
     getPaginateTickets: "/tickets?per_page=%per_page%&page=%page%",
     getTicket: "/tickets/:id",
-    getUser: "/user.json"
+    getUser: "/user"
   }
 };
 
