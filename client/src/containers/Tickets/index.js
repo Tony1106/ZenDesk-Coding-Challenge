@@ -4,6 +4,7 @@ import styles from "./styles.module.scss";
 import Ticket from "../../components/Ticket";
 import Pagination from "../../components/Pagination";
 import Spinner from "../../components/Spinner";
+import ErrorPage from "../../components/ErrorPage";
 import ViewTicket from "../ViewTicket";
 import { constant } from "../../constant/";
 import { endpoint, makePaginationEndPoint } from "../../ultils/EndPoints";
@@ -17,7 +18,7 @@ export default class Tickets extends Component {
     page: 1,
     isOpenTicket: false,
     tickets: [],
-    errors: {}
+    isError: false
   };
   componentDidMount() {
     let { ticketsEndPoint } = this.state;
@@ -43,7 +44,7 @@ export default class Tickets extends Component {
       })
       .catch(err => {
         this.setState({
-          error: err.response.data.error,
+          isError: true,
           isLoading: false
         });
         ToastsStore.error(err.response.data.error.msg);
@@ -61,12 +62,13 @@ export default class Tickets extends Component {
     this.setState({ isOpenTicket: false });
   };
   render() {
-    const { tickets, count, page } = this.state;
+    const { tickets, count, page, isError } = this.state;
     return (
       <div className={styles.tickets}>
         <Spinner isShow={this.state.isLoading} />
         <ToastsContainer store={ToastsStore} />
         <h3>View tickets</h3>
+        {isError ? <ErrorPage /> : null}
         <div className={styles.ticket}>
           {tickets &&
             tickets.map(ticket => (
