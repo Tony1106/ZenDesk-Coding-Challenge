@@ -66,11 +66,11 @@ export default class Tickets extends Component {
   render() {
     const { tickets, count, page, isError } = this.state;
     return (
-      <div className={styles.tickets}>
-        <Spinner isShow={this.state.isLoading} />
+      <div className={styles.tickets} data-test="tickets">
+        <Spinner isShow={this.state.isLoading} data-test="spinner" />
         <ToastsContainer store={ToastsStore} />
         <h3>View tickets</h3>
-        {isError ? <ErrorPage /> : null}
+        {isError ? <ErrorPage data-test="error" /> : null}
         <div className={styles.ticket}>
           {tickets &&
             tickets.map(ticket => (

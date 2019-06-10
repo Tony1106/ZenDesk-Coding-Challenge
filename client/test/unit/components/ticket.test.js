@@ -63,5 +63,17 @@ describe("Components -> Ticket", () => {
           .text()
       ).toEqual("View Ticket");
     });
+
+    test("should call function openTicket() when click", () => {
+      const openTicket = jest.fn();
+      wrapper = mount(
+        <BrowserRouter>
+          <Ticket {...props} openTicket={openTicket} />
+        </BrowserRouter>
+      );
+      const button = findTestByAttr(wrapper, "actionButton").at(1);
+      button.simulate("click");
+      expect(openTicket).toHaveBeenCalledTimes(1);
+    });
   });
 });
