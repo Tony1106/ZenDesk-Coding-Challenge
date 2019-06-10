@@ -2,32 +2,45 @@
 
 Zendesk coding challenge
 
-## Getting Started
+## Summary
 
 This is the project build on Node JS and React. 
 
-Backend: 
-- Base on microservices architecture, the server works like an API Gateway, it is not only work with Zendesk service but also work with other service when scale up. The clients will communicate with this API gateway and never know the microservices behind. 
-- It can slow down our service but it will help front end side more easy to communicate with the REST API and easy to manage traffic and detect the services down.
-- This server talk direcly with Zendesk API, for pagination, Zendesk already has it own so I just implement it dynamic endpoint from client. Ex: http://localhost:4000/tickets?per_page=10&page=2, the server will take 2 query per_page & page and change it to https://tony1106.zendesk.com/api/v2/tickets?per_page=10&page=2.
+### Backend: 
+- Base on microservices architecture, the server works like an API Gateway, it is not only working with Zendesk service but also work with other services when scaling up. The clients will communicate with this API gateway and never know the microservices behind. 
+- It can slow down our service but it will help front end side more easy to communicate with the REST API and easy to manage traffic and detect when the services down.
+- This server talks directly with Zendesk API, for pagination, Zendesk already has it own so I just implement it dynamic endpoint from the client. Ex: http://localhost:4000/tickets?per_page=10&page=2, the server will take 2 queries per_page & page and change it to https://tony1106.zendesk.com/api/v2/tickets?per_page=10&page=2.
 
-`
----src
---------core
---------api
---------modules
----------------Zendesk
-----------------------Controller
-----------------------Model
-----------------------Route
-`
+.
 
-Front end: 
-- With high scability, React and Redux is a good choice. In this project, I didn't use Redux for state management but for real project, It would be a great ideas to start with. 
+    ├── src                    
+    │   ├── core                    # Load and config all needed library like express, MongoDB, logger,... 
+    │   ├── api                     # Create axios instance for each service like: Zendesk
+    │   ├── routes                  # Register the modules
+    │   ├── modules                 # Place where contains all the microservices 
+    │   ├   └── Zendesk             # Zendesk module
+    │   ├       └── Controller      # Receive request and communicate with Zendesk services.
+    │   ├       └── Model           # Communicate with internal database for tracking and detect service fail.
+    │   ├       └── Route           # Create endpoint for service.
+    │   └── ...                 
+    └── test
+    └── ...
+
+### Front end: 
+- With high scalability, React and Redux is a good choice. In this project, I didn't use Redux for state management but for real project, It's definitely a great idea to start with. 
+- This project I just create-react-app bootstrap to start the project with add-on libraries: react-router-dom, react-toasts, postcss-loader, node-sass.
+- For styling, I use SCSS and component module to style the component, it will help to scale up the project more easily in the future. Also, I use Bootstrap to take advantage with their library.
+
+### Testing: 
+I was underestimating the time for making the backend & front end from scratch and the complexity and huge work when doing React Test. So in this project, I can't make 100% test coverage. 
+- Test library: Jest, Enzyme, supertest.
+- I do unit test for both server and client.
+- Server: test all helper function and API test by suppertest.
+- Client: test some component and their behaviour with Enzyme
 
 
-![img](https://i.imgur.com/Q5oo3Ae.png)
 
+## How to start
 Clone the project:
 
 ```
