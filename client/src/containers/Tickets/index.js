@@ -47,8 +47,10 @@ export default class Tickets extends Component {
           isError: true,
           isLoading: false
         });
-        ToastsStore.error(err.response.data.error.msg);
-        console.log(err.response.data.error);
+        if (err.response.status === 500) {
+          ToastsStore.error(err.response.statusText);
+        } else ToastsStore.error(err.response.data.error.msg);
+        console.log(err.response);
       });
   };
   handleChangePage = page => {
