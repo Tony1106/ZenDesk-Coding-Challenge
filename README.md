@@ -44,66 +44,36 @@ I was underestimating the time for making the backend & front end from scratch a
 Clone the project:
 
 ```
-git clone git@github.com:Tony1106/robotToy.git
+git clone git@github.com:Tony1106/ZenDesk-Coding-Challenge.git
 ```
 
-Install dependency:
+Install root dependency:
 
 ```
 npm install
 ```
-
-Play with the robot in the terminal:
-
-```
-npm run play
-```
-
-## How to play
-
-### Place the robot on the table
-
-- The table size set the default at 5x5.
-- Input the position and the direction of the robot on the table.
-- If the robot gets the wrong input or it not on the table, it will automatically set the default position of the robot is {x: 0, y: 0, f: North}.
-
-### Move the robot
-
-- Simply move the robot by your input.
-- Hit the ENTER to move the robot 1 unit in the same direction of the robot.
-- Input UP, DOWN, LEFT, RIGHT to move the robot 1 unit UP, DOWN, LEFT, RIGHT. It will change the direction and position of the robot.
-- It will ignore the movement if the wrong input.
-- It will only change the direction if the robot hit the wall.
-
-## Running the tests
-
-Most of the function already cover by unit testing.
-There is some complex movement to test the robot as well.
-Run the test:
+Install server & client dependency:
 
 ```
-npm run test
+npm run installServer
+npm run installClient
 ```
-
-## Functionality
-
-- `const Table = require('./index')`
-- `const robot = new Table(5,5)`: create a table 5x5
-- `create()`: create the table for the print() on the console log.
-- `place(x,y,f)`: place the robot on the table take a position: x,y and direction f.
-- `move(direction)`: move the robot by the direction. The argument `direction` can take UP, DOWN, LEFT, RIGHT or NORTH, SOUTH, WEST, EAST to move the robot or just leave it empty to move the robot 1 unit as its direction.
-- `report()`: print the position of the robot to the screen.
-- `print()`: print the whole table out the see the robot. The robot will have the symbol: `^ > < ⌄` the show its direction. Require to run the `create()` first.
-
-![img](https://i.imgur.com/tbtITnZ.png)
-
-## Add more function to the robot
-
-To make the robot more functionality, simply just add more method in the `component` folder and register a new method at the `index.js` by using prototype:
+Create and paste the line below to .env file at /server directory
 
 ```
-Table.prototype.method = require("./components/mothod");
+DB_PORT=4000
+DB_NAME=ZENDESK_CODING_CHALLANGE
+ZENDESK_USERNAME=buiminhtien06@gmail.com
+ZENDESK_PASSWORD=123456
 ```
+Start the project:
+At root directory:
+
+```
+npm run start
+```
+
+
 
 ## Authors
 
