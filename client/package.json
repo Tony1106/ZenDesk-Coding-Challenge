@@ -16,12 +16,17 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "jest-enzyme",
-    "testEnvironment": "enzyme"
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/assetTransformer.js",
+      "\\.(css|scss)$": "<rootDir>/assetTransformer.js"
+    },
+    "testPathIgnorePatterns": [
+      "<rootDir>/test/setup/"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"

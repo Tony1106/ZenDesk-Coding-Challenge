@@ -9,7 +9,7 @@ import ViewTicket from "../ViewTicket";
 import { constant } from "../../constant/";
 import { endpoint, makePaginationEndPoint } from "../../ultils/EndPoints";
 import axios from "axios";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 export default class Tickets extends Component {
   state = {
     ticketsEndPoint: endpoint.tickets.getPaginateTickets,
@@ -81,17 +81,20 @@ export default class Tickets extends Component {
               />
             ))}
         </div>
-        <Route
-          exact
-          path="/tickets/:id"
-          render={props => (
-            <ViewTicket
-              isOpen={this.state.isOpenTicket}
-              closeTicket={this.handleCloseTicket}
-              {...props}
-            />
-          )}
-        />
+        <Switch>
+          <Route
+            exact
+            path="/tickets/:id"
+            render={props => (
+              <ViewTicket
+                isOpen={this.state.isOpenTicket}
+                closeTicket={this.handleCloseTicket}
+                {...props}
+              />
+            )}
+          />
+        </Switch>
+
         <Pagination
           count={count}
           per_page={constant.pagination.per_page}
