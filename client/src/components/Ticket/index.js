@@ -12,8 +12,8 @@ export default class Ticket extends Component {
       description = description.substring(0, maxDescriptionLength);
     return (
       <div className={styles.container}>
-        <h5 data-name="subject">{subject}</h5>
-        <p data-name="description">{description} ...</p>
+        <h5 data-test="subject">{subject}</h5>
+        <p data-test="description">{description} ...</p>
 
         <div className={styles.footer}>
           <TicketFooter name="Status" status={status} />
@@ -27,7 +27,7 @@ export default class Ticket extends Component {
             className="btn btn-primary btn-sm"
             to={`/tickets/${id}`}
             onClick={() => this.props.openTicket()}
-            data-name="actionButton"
+            data-test="actionButton"
           >
             View Ticket
           </Link>

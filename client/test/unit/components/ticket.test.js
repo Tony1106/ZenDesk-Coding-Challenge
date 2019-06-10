@@ -1,7 +1,8 @@
 import React from "react";
-import { shallow, mount } from "../../setup";
+import { mount } from "../../setup";
 import Ticket from "../../../src/components/Ticket";
 import { BrowserRouter } from "react-router-dom";
+import { findTestByAttr } from "../../ultils";
 
 describe("Components -> Ticket", () => {
   describe("test props", () => {
@@ -26,7 +27,7 @@ describe("Components -> Ticket", () => {
     });
   });
 
-  describe("tets render", () => {
+  describe("test render correct without error", () => {
     let wrapper;
     let props = {
       ticket: {
@@ -46,14 +47,21 @@ describe("Components -> Ticket", () => {
       );
     });
 
-    test("should render the right subject ", () => {
-      expect(wrapper.find("[data-name='subject']").text()).toEqual("subject");
+    test("should render the subject ", () => {
+      expect(findTestByAttr(wrapper, "subject").text()).toEqual("subject");
     });
 
-    test("should render the right description with max 150 chars and add ' ...' in the end", () => {
-      expect(wrapper.find("[data-name='description']").text()).toEqual(
+    test("should render the description with max 150 chars and add ' ...' in the end", () => {
+      expect(findTestByAttr(wrapper, "description").text()).toEqual(
         props.ticket.description.substring(0, 150) + " ..."
       );
+    });
+    test("should render the active button ", () => {
+      expect(
+        findTestByAttr(wrapper, "actionButton")
+          .at(1)
+          .text()
+      ).toEqual("View Ticket");
     });
   });
 });
