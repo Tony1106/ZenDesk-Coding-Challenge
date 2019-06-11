@@ -3,6 +3,9 @@ const logger = require("../../core/logger");
 const tickets = require("../../api/Zendesk/index");
 const response = require("../../core/response");
 const Joi = require("@hapi/joi");
+const requestType = require("../../api/Zendesk/constant");
+const Zendesk = require("./Model");
+const zendesk = new Zendesk();
 
 module.exports = {
   index: function(req, res) {
@@ -29,10 +32,12 @@ module.exports = {
     tickets
       .request(endpoint, "get")
       .then(response => {
+        zendesk.countRequest(Zendesk, requestType.request_success);
         return res.send(response);
       })
       .catch(err => {
-        response.json(res, null, err, null);
+        zendesk.countRequest(Zendesk, requestType.request_fail);
+        return response.json(res, null, err, null);
       });
   },
 
@@ -40,10 +45,12 @@ module.exports = {
     tickets
       .request("/users.json", "get")
       .then(response => {
+        zendesk.countRequest(Zendesk, requestType.request_success);
         return res.send(response);
       })
       .catch(err => {
-        response.json(res, null, err, null);
+        zendesk.countRequest(Zendesk, requestType.request_fail);
+        return response.json(res, null, err, null);
       });
   },
 
@@ -52,10 +59,12 @@ module.exports = {
     tickets
       .request(`/tickets/${ticketID}.json`, "get")
       .then(response => {
+        zendesk.countRequest(Zendesk, requestType.request_success);
         return res.send(response);
       })
       .catch(err => {
-        response.json(res, null, err, null);
+        zendesk.countRequest(Zendesk, requestType.request_fail);
+        return response.json(res, null, err, null);
       });
   }
 };

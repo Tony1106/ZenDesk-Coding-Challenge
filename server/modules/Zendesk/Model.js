@@ -1,14 +1,27 @@
 const mongoose = require("../../core/mongoose");
-
 const Schema = mongoose.Schema;
+const requestType = require("../../api/Zendesk/constant");
 
-const TicketSchema = new Schema({
-  title: {
-    type: String
+const serviceSchema = new Schema({
+  [requestType.request_success]: {
+    type: Number,
+    default: 0
   },
-  des: {
-    type: String
+  [requestType.request_fail]: {
+    type: Number
   }
 });
-let Post = mongoose.model("Posts", TicketSchema);
-module.exports = Post;
+
+serviceSchema.methods.countRequest = function(service, resquestType) {
+  service
+    .findOneAndUpdate(
+      { [resquestType]: { $exists: true } },
+      { $inc: { [resquestType]: 1 } },
+      { upsert: true }
+    )
+    .catch(err => {
+      console.log(err);
+    });
+};
+let ZendeskService = mongoose.model("ZendeskServices", serviceSchema);
+module.exports = ZendeskService;
