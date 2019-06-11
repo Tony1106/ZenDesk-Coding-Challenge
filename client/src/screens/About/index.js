@@ -10,6 +10,19 @@ export default class About extends Component {
         <div className="container">
           <h3 className=" text-primary text-center">Tony Bui</h3>
           <p className="text-center text-danger">Self-taught Developer</p>
+          <ul>
+            <li>
+              <a href="https://stackoverflow.com/users/9694174/tony-bui">
+                StackOverFlow - 429 reps
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/tienbui06/">Linkedin</a>
+            </li>
+            <li>
+              <a href="https://github.com/Tony1106">Github</a>
+            </li>
+          </ul>
           <div className="specific d-flex justify-content-center">
             <span class="badge badge-info mr-3">React</span>
             <span class="badge badge-info mr-3">Redux</span>
