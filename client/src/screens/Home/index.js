@@ -11,8 +11,6 @@ export default function Home(props) {
         <SideMenu />
       </div>
       <Route path="/tickets" component={Tickets} />
-
-      {/* <Route path="/tickets/filter/:option" component={Tickets} /> */}
     </div>
   );
 }
