@@ -25,7 +25,7 @@ This is the project build on Node JS and React.
     │   └── ...                 
     └── test
     └── ...
-![alt text](https://imgur.com/KL2bugC "Software architecture")
+![alt text](https://i.imgur.com/KL2bugC.png "Software architecture")
 ### Front end: 
 - With high scalability, React and Redux is a good choice. In this project, I didn't use Redux for state management but for real project, It's definitely a great idea to start with. 
 - This project I just create-react-app bootstrap to start the project with add-on libraries: react-router-dom, react-toasts, postcss-loader, node-sass.
