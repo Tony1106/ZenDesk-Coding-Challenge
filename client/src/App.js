@@ -1,20 +1,23 @@
 import React from "react";
 import "./App.scss";
 import "bootstrap/dist/css/bootstrap.css";
-import "font-awesome/css/font-awesome.css";
 import Header from "./components/Header";
 import Home from "./screens/Home/";
 import ReadMe from "./screens/ReadMe/";
-import { Route, BrowserRouter as Router } from "react-router-dom";
+import About from "./screens/About/";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 function App() {
   return (
-    <Router>
-      <Header />
-      <div>
-        <Route path="/" component={Home} />
-        <Route path="/readme" component={ReadMe} />
-      </div>
-    </Router>
+    <>
+      <Router>
+        <Header />
+        <Switch>
+          <Route path="/readme" component={ReadMe} />
+          <Route path="/about" component={About} />
+          <Route path="/" component={Home} />
+        </Switch>
+      </Router>
+    </>
   );
 }
 
