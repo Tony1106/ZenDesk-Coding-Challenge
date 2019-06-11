@@ -2,13 +2,29 @@ const Post = require("./Model");
 const logger = require("../../core/logger");
 const tickets = require("../../api/Zendesk/index");
 const response = require("../../core/response");
+const Joi = require("@hapi/joi");
 
 module.exports = {
   index: function(req, res) {
     let { per_page, page } = req.query;
     let endpoint = "/tickets.json";
-    if (per_page > 1 && page > 0) {
-      endpoint = `${endpoint}?per_page=${per_page}&page=${page}`;
+    if (per_page && page) {
+      const schema = {
+        per_page: Joi.number()
+          .integer()
+          .greater(1),
+        page: Joi.number()
+          .integer()
+          .greater(0)
+      };
+      //Validate the query, if it dosen't pass the validation, give the default end point without pagination
+      Joi.validate({ per_page, page }, schema, (err, value) => {
+        if (err) {
+          logger.error(err);
+          return;
+        }
+        endpoint = `${endpoint}?per_page=${per_page}&page=${page}`;
+      });
     }
     tickets
       .request(endpoint, "get")
@@ -19,6 +35,7 @@ module.exports = {
         response.json(res, null, err, null);
       });
   },
+
   getUser: function(req, res) {
     tickets
       .request("/users.json", "get")
@@ -29,6 +46,7 @@ module.exports = {
         response.json(res, null, err, null);
       });
   },
+
   show: function(req, res) {
     let ticketID = req.params.id;
     tickets
