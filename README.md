@@ -31,6 +31,19 @@ This is the project build on Node JS and React.
 - This project I just create-react-app bootstrap to start the project with add-on libraries: react-router-dom, react-toasts, postcss-loader, node-sass.
 - For styling, I use SCSS and component module to style the component, it will help to scale up the project more easily in the future. Also, I use Bootstrap to take advantage with their library.
 
+    ├── src                    
+    │   ├── components             # Re-use component for project
+    │   ├── constant               # All constant. For ex: can set pagination per_page for ticket.
+    │   ├── containers             # Container contain small components
+    │   ├── screen                 # All screen like: Home, About, Readme
+    │   ├── styles                 # Contain SCSS theming style or helper like: variable, mixin...
+    │   ├── ultils                 # Helper function.
+    │   ├── App.scss               # Global styles
+    │   ├── App.js                 # Register route
+    │   └── ...                 
+    └── test
+    └── ...
+
 ### Testing: 
 I was underestimating the time for making the backend & front end from scratch and the complexity and huge work when doing React Test. So in this project, I can't make 100% test coverage. 
 - Test library: Jest, Enzyme, supertest.
