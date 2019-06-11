@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles.module.scss";
 import { Link } from "react-router-dom";
-export default function Home(props) {
+export default function Header(props) {
   return (
     <div className={styles.header}>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
