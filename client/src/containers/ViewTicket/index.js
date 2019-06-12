@@ -9,7 +9,8 @@ export default class ViewTicket extends Component {
     isShow: this.props.isOpen,
     isLoading: false,
     ticket: {},
-    id: ""
+    id: "",
+    isError: false
   };
   static getDerivedStateFromProps(nextProps, prevState) {
     let update = {};
@@ -45,12 +46,12 @@ export default class ViewTicket extends Component {
       .catch(err => {
         this.setState({
           error: err.response.data.error,
+          isError: true,
           isLoading: false
         });
         if (err.response.status === 500) {
-          ToastsStore.error(err.response.statusText);
+          ToastsStore.error("Can't view ticket! Please try again");
         } else ToastsStore.error(err.response.data.error.msg);
-        console.log(err.response);
       });
   };
   resetState = () => {

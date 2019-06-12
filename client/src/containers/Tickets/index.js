@@ -22,6 +22,12 @@ export default class Tickets extends Component {
   };
   componentDidMount() {
     let { ticketsEndPoint } = this.state;
+    let { pathname } = this.props.location;
+
+    //Check if the pathname is correct and auto open the TicketView when access tickets/:id
+    if (typeof pathname.split("/")[2] !== "undefined") {
+      this.setState({ isOpenTicket: true });
+    }
     let page = this.state.page;
     this.getTicket(ticketsEndPoint, page);
   }

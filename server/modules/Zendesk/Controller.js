@@ -56,6 +56,22 @@ module.exports = {
 
   show: function(req, res) {
     let ticketID = req.params.id;
+
+    const schema = {
+      ticketID: Joi.number()
+        .integer()
+        .greater(0)
+    };
+    Joi.validate({ ticketID }, schema, (err, value) => {
+      if (err) {
+        return response.json(
+          res,
+          null,
+          { msg: "Ticket ID must be an integer! Please try again" },
+          null
+        );
+      }
+    });
     tickets
       .request(`/tickets/${ticketID}.json`, "get")
       .then(response => {
