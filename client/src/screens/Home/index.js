@@ -10,7 +10,7 @@ export default function Home(props) {
       <div className={styles["side-menu"]}>
         <SideMenu />
       </div>
-      <Route path="/tickets" component={Tickets} />
+      <Route path="/" component={Tickets} />
     </div>
   );
 }
