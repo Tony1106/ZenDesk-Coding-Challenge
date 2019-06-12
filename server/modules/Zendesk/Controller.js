@@ -3,7 +3,7 @@ const logger = require("../../core/logger");
 const tickets = require("../../api/Zendesk/index");
 const response = require("../../core/response");
 const Joi = require("@hapi/joi");
-const requestType = require("../../api/Zendesk/constant");
+const requestType = require("../../api/Zendesk/requestStatusType");
 const Zendesk = require("./Model");
 const zendesk = new Zendesk();
 

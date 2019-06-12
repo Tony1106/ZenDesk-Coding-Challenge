@@ -1,6 +1,6 @@
 const mongoose = require("../../core/mongoose");
 const Schema = mongoose.Schema;
-const requestType = require("../../api/Zendesk/constant");
+const requestType = require("../../api/Zendesk/requestStatusType");
 
 const serviceSchema = new Schema({
   [requestType.request_success]: {
