@@ -14,7 +14,6 @@ export default class Ticket extends Component {
       <div className={styles.container}>
         <h5 data-test="subject">{subject}</h5>
         <p data-test="description">{description} ...</p>
-
         <div className={styles.footer}>
           <TicketFooter name="Status" status={status} />
         </div>

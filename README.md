@@ -46,13 +46,24 @@ This is the project build on Node JS and React.
     └── test
     └── ...
 
+***Dynamic Change UI: 
+- Visit `src/constant`.
+- Change the number of ticket per page by change the variable `per_page`.
+- Change the max characters of the decription on the Home page by change the variable `maxDescriptionLength`.
+
 ### Testing: 
 I was underestimating the time for making the backend & front end from scratch and the complexity and huge work when doing React Test. So in this project, I can't make 100% test coverage. 
 - Test library: Jest, Enzyme, supertest.
 - I do unit test for both server and client.
 - Server: test all helper function and API test by suppertest.
 - Client: test some component and their behaviour with Enzyme
-
+- Command at ```root``` directory: 
+```
+npm run testServer
+```
+```
+npm run testClient
+```
 
 
 ## How to start
@@ -86,6 +97,11 @@ At root directory:
 
 ```
 npm run start
+```
+
+Optional to use MongoDB to tracking services request success or fail.
+```
+mongod
 ```
 
 ## What I learn from this project

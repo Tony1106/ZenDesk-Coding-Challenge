@@ -1,5 +1,5 @@
 import React from "react";
-import { mount, shallow } from "../../setup";
+import { shallow } from "../../setup";
 import Tickets from "../../../src/containers/Tickets";
 
 import { findTestByAttr } from "../../ultils";

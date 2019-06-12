@@ -8,7 +8,9 @@
     "server": "cd server && npm start",
     "start": "concurrently --kill-others \"npm run server\" \"npm run client\"",
     "installServer": "cd server && npm install",
-    "installClient": "cd client && npm install"
+    "installClient": "cd client && npm install",
+    "testClient": "cd client && npm test",
+    "testServer": "cd server && npm test"
   },
   "keywords": [],
   "author": "",

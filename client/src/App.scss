@@ -12,3 +12,19 @@ body {
     }
   }
 }
+
+code {
+  font-size: 87.5%;
+  color: #e83e8c;
+  word-break: break-word;
+  background: #dddd;
+  padding: 5px;
+}
+pre {
+  display: block;
+  font-size: 87.5%;
+  color: #212529;
+  line-height: 25px;
+  padding: 10px;
+  border: 1px solid #a7a1a1a6;
+}

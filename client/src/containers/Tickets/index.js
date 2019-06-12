@@ -22,10 +22,10 @@ export default class Tickets extends Component {
   };
   componentDidMount() {
     let { ticketsEndPoint } = this.state;
-    let { pathname } = this.props.location;
+    let { pathname } = this.props.location || "/tickets";
 
     //Check if the pathname is correct and auto open the TicketView when access tickets/:id
-    if (typeof pathname.split("/")[2] !== "undefined") {
+    if (pathname && typeof pathname.split("/")[2] !== "undefined") {
       this.setState({ isOpenTicket: true });
     }
     let page = this.state.page;
@@ -56,7 +56,6 @@ export default class Tickets extends Component {
         if (err.response.status === 500) {
           ToastsStore.error(err.response.statusText);
         } else ToastsStore.error(err.response.data.error.msg);
-        console.log(err.response);
       });
   };
   handleChangePage = page => {
